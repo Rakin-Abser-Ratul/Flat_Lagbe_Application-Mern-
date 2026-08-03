@@ -1,0 +1,560 @@
+/* --- GLOBAL PAGE BACKGROUND SETUP --- */
+body {
+    background-color: #f8fafc;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Base Root Framework Styles - Compact 1200px width limit */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    color: #334155;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Loading State Utilities */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+}
+
+.spinner {
+    width: 35px;
+    height: 35px;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #00bcd4;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Component Header Action Bar Layout */
+.listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.listings-header h1 {
+    font-size: 21px;
+    font-weight: 400;
+    color: #0f172a;
+    margin: 0 0 4px 0;
+    display: inline-block;
+}
+
+.listings-header h1::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #00bcd4;
+    margin-top: 4px;
+}
+
+.properties-count {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 6px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* --- SEARCH BAR ENGINE STYLES --- */
+.search-box-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 12px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.search-input {
+    padding: 6px 10px 6px 28px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #1e293b;
+    width: 240px;
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #00bcd4;
+}
+
+/* Sorting Element Rules */
+.sort-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.sort-box select {
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 11px;
+    color: #1e293b;
+}
+
+/* View Mode Switcher Layout Controls */
+.view-toggles {
+    display: flex;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 2px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: all 0.15s ease;
+}
+
+.toggle-btn.active {
+    background: #e0f7fa;
+    color: #00838f;
+}
+
+/* --- INSIDE THE CONTAINER: PREMIUM PANEL ISOLATION --- */
+.listings-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.no-results {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* --- GRID FORMAT (3 EQUAL COLUMNS) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.grid-container .flat-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.grid-container .card-image-wrapper {
+    height: 180px;
+}
+
+.grid-container .flat-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.grid-container .card-actions {
+    margin-top: auto;
+}
+
+/* --- GALLERY / LIST FORMAT --- */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.list-container .flat-card {
+    display: flex;
+    flex-direction: row;
+    min-height: 170px;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.list-container .card-image-wrapper {
+    width: 250px;
+    min-height: 100%;
+    flex-shrink: 0;
+}
+
+.list-container .floating-price-badge {
+    display: none;
+}
+
+.list-container .card-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+}
+
+.list-container .card-body-top {
+    flex-grow: 1;
+}
+
+.list-container .title-price-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.list-container .flat-title {
+    font-size: 15px;
+    margin: 0;
+}
+
+.list-container .flat-location {
+    margin: 2px 0 8px 0;
+}
+
+.list-container .card-actions {
+    margin: 0;
+    width: 160px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+/* --- CARD INNER STYLING FRAMEWORK --- */
+.flat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease-in-out;
+}
+
+.flat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+    border-color: #cbd5e1;
+}
+
+/* Media/Image Containers */
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* FLOATING PRICE BADGE ON IMAGE (GRID VIEW) */
+.floating-price-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background-color: #059669 !important; /* Emerald Green */
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+/* Hover Action Overlays */
+.img-action-overlays {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.overlay-icon {
+    background: rgba(15, 23, 42, 0.65);
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 10px;
+}
+
+/* Content Text Bodies */
+.card-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.title-price-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.flat-title {
+    margin: 0;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+/* --- EMERALD GREEN PRICE ACCENT ABOVE VIEW DETAILS --- */
+.flat-price-text,
+.flat-card .card-actions .flat-price-text,
+.card-actions span.flat-price-text,
+div.card-actions > span {
+    color: #059669 !important;
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.list-container .flat-price-text {
+    text-align: right;
+}
+
+.flat-location {
+    font-size: 11px;
+    color: #64748b;
+    margin: 2px 0 8px 0;
+}
+
+/* Micro-specification chips */
+.flat-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11px;
+    color: #475569;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 8px;
+    margin-bottom: 10px;
+}
+
+/* --- REDIRECT ACTION BUTTON CONTAINER --- */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* HIGH SPECIFICITY SOLID CYAN BUTTON */
+.flat-card .card-actions .details-btn,
+button.details-btn {
+    width: 100% !important;
+    padding: 8px !important;
+    background-color: #00bcd4 !important; /* Solid cyan fill */
+    color: #ffffff !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    display: block !important;
+    text-align: center !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.flat-card .card-actions .details-btn:hover,
+button.details-btn:hover {
+    background-color: #00acc1 !important;
+    color: #ffffff !important;
+}
+
+/* --- OWNER ACTION BUTTONS (EDIT / DELETE) --- */
+.owner-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+.edit-btn {
+    flex: 1;
+    padding: 6px 10px;
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.delete-btn {
+    padding: 6px 10px;
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+/* --- LOAD MORE CONTROLS --- */
+.load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.load-more-btn {
+    padding: 10px 24px;
+    background-color: #ffffff;
+    border: 2px solid #00bcd4;
+    color: #00bcd4;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.load-more-btn:hover {
+    background-color: #00bcd4;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 850px) {
+    .search-input {
+        width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .listings-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .search-input {
+        width: 100%;
+    }
+    .list-container .flat-card {
+        flex-direction: column;
+        height: auto;
+    }
+    .list-container .card-image-wrapper {
+        width: 100%;
+        height: 160px;
+    }
+    .list-container .card-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .list-container .card-actions {
+        width: 100%;
+        align-items: flex-start;
+        margin-top: 8px;
+    }
+    .list-container .flat-price-text {
+        text-align: left;
+    }
+}
